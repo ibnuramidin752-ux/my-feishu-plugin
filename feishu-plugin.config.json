@@ -1,0 +1,20 @@
+{
+  "id": "feishu-minimal-plugin-fix",
+  "name": "飞书最小化插件修复版",
+  "version": "1.0.0",
+  "description": "基于官方最小化架构的修复版本，解决TypeError和CSP违规问题",
+  "icon": "https://lf1-static.bytednsdoc.com/obj/eden-cn/LMfspH/ljhwZthlaukjlkulzlp/feishu-icon.svg",
+  "ui": {
+    "url": "https://your-github-username.github.io/feishu-minimal-plugin-fix/",
+    "width": 400,
+    "height": 300
+  },
+  "api": {
+    "permissions": [
+      "base:read",
+      "table:read",
+      "record:write",
+      "file:upload"
+    ]
+  }
+}
