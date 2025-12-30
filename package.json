@@ -1,0 +1,20 @@
+{
+  "name": "official-bitable-link-converter",
+  "version": "1.0.0",
+  "description": "基于官方架构升级的链接转附件插件-支持防盗链",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "upload": "npm run build && opdev upload bitable-extension",
+    "test": "node dist/test.js",
+    "preview": "opdev preview bitable-extension"
+  },
+  "dependencies": {
+    "@lark-opdev/block-basekit-server-api": "^1.0.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.9.3"
+  }
+}
