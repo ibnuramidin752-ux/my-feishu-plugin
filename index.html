@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>official-plugin-upgrade</title>
+    <script>
+      // DO NOT REMOVE THIS SCRIPT
+      // 运行时动态计算 basename 并安全设置 <base>
+      // 必须在资源加载之前执行，因此放在 head 的最前面
+      (function() {
+        var pathname = window.location.pathname;
+        var originalPathname = pathname;
+        
+        pathname = pathname.replace(/\/index\.html?$/, '');
+        
+        var basename = pathname || '/';
+        if (!basename.startsWith('/')) basename = '/' + basename;
+        if (basename !== '/' && basename.endsWith('/')) {
+          basename = basename.slice(0, -1);
+        }
+        window.__APP_BASENAME__ = basename;
+        
+        // 设置 <base> 标签，让所有相对路径资源正确解析
+        // 注意：base 标签必须在资源引用之前设置，且只能有一个
+        var head = document.head || document.getElementsByTagName('head')[0];
+        var baseEl = head.querySelector('base');
+        var href = basename === '/' ? '/' : basename + '/';
+        if (baseEl) {
+          baseEl.setAttribute('href', href);
+        } else {
+          baseEl = document.createElement('base');
+          baseEl.setAttribute('href', href);
+          // 确保 base 标签在 head 的最前面
+          if (head.firstChild) {
+            head.insertBefore(baseEl, head.firstChild);
+          } else {
+            head.appendChild(baseEl);
+          }
+        }
+        
+        // 如果当前路径以 index.html 结尾，重定向到去掉 index.html 的路径
+        // 这样可以避免 React Router 看到 /index.html 路径
+        if (originalPathname !== pathname && originalPathname.endsWith('index.html')) {
+          var newPath = pathname + (window.location.search || '') + (window.location.hash || '');
+          if (window.history.replaceState) {
+            window.history.replaceState(null, '', newPath);
+          }
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-CPIoQagO.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/style-BFBzP8lA.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+
